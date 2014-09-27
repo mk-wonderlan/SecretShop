@@ -3,7 +3,7 @@
  * Bootstrap Fonts
  */
 
-@font-face {
+ @font-face {
     font-family: 'Glyphicons Halflings';
     src: url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.eot');
     src: url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
@@ -16,7 +16,7 @@
  *Font Awesome Fonts
  */
 
-@font-face {
+ @font-face {
     font-family: 'FontAwesome';
     src: url('../bower_components/font-awesome/fonts/fontawesome-webfont.eot?v=4.1.0');
     src: url('../bower_components/font-awesome/fonts/fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'),
@@ -30,7 +30,7 @@
 /**
  * App-wide Styles
  */
-select, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+ select, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
     color: white;
     height: 30px !important;
 }
@@ -39,4 +39,32 @@ select, input[type="text"], input[type="password"], input[type="datetime"], inpu
     background: #ccc;
     color: #000;
     padding: 0.2em 0;
+}
+.navbar .nav > li > a:hover{
+    color:steelblue!important;
+    background-color: black!important;
+
+}
+.navbar .nav > li > a {
+    color: steelblue!important;
+    text-shadow: 0 1px 0 #444!important;
+}
+.navbar .nav > .active > a, .navbar .nav > .active > a:hover, .navbar .nav > .active > a:focus {
+    background-color: #151515;
+    color: steelblue!important;
+}
+.navbar-text {
+    color: steelblue!important;
+}
+.list-group-item{
+    background-color: #333;
+    border-color: steelblue;
+
+}
+.list-group{
+box-shadow: 1 10px 0 rgba(255, 255, 255, 0.1), 0 1px 7px 0 rgba(0, 0, 0, 0.8) inset;
+}
+.hero-unit{
+    box-shadow: 0 4px 0 rgba(255, 255, 255, 0.1), 0 1px 7px 0 rgba(0, 0, 0, 0.8) inset;
+
 }
