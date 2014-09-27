@@ -9,6 +9,7 @@ angular.module('secretShopApp')
       socket.syncUpdates('thing', $scope.awesomeThings);
     });
 
+
     $scope.addThing = function() {
       if($scope.newThing === '') {
         return;
