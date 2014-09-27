@@ -5,7 +5,7 @@ angular.module('secretShopApp')
     $stateProvider
       .state('main', {
         url: '/',
-        templateUrl: 'app/account/login/login.html',
-        controller: 'LoginCtrl'
+        templateUrl: 'app/main/main.html',
+        controller: 'MainCtrl'
       });
   });
