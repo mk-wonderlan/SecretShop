@@ -5,6 +5,6 @@ A checkin and kiosk system for LAN-events
 
 Todo
 ==========
-consumera spree api
-bygg kioskSystem
-skriv fler todos
+consumera spree api<br>
+bygg kioskSystem<br>
+skriv fler todos<br>
