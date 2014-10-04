@@ -37,7 +37,14 @@ angular.module('secretShopApp')
   		description:"en testprodukt",
    		url:"http://placehold.it/250x250"
 
-  	}
+  	},
+   	{
+  		item:"test test test",
+  		price:"1337kr",
+  		description:"en testprodukt",
+  		url:"http://placehold.it/250x250"
+  	},
+
 
 
   	];

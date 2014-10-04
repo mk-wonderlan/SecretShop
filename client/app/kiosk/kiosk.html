@@ -2,10 +2,23 @@
 
 
 <div class="kiosk-unit" id="banner">
-  <div class="container">
-  <div class="kioskitems col-md-3" ng-repeat="item in items">
-  	<img ng-src="{{item.url}}" alt="">
-  </div>
-	
-  </div>
-</div>
+	<div class="container">
+		<div class="kioskitems wrapper col-md-3" ng-repeat="item in items">
+
+
+			<div class="img">
+				
+				<img ng-src="{{item.url}}" alt="{{item.item}}">
+				<div class="ribbon-green-price container-fluid">
+					<div class="col-md-6">
+						{{item.item}}
+					</div>
+					<div class="col-md-6">
+						{{item.price}}
+					</div>  	
+				</div>
+
+			</div>
+
+		</div>
+	</div>

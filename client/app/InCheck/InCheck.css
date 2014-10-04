@@ -4,3 +4,7 @@ input.search {padding:5px; border:2px solid #ccc;
     
     color:black;
     }
+.text-muted-title>p{
+	font-weight: bold;
+	font-size: 20px;
+}
