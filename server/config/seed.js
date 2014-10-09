@@ -7,6 +7,7 @@
 
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
+var Booking = require('../api/incheck/incheck.model');
 
 Thing.find({}).remove(function() {
   Thing.create({
@@ -47,3 +48,74 @@ User.find({}).remove(function() {
     }
   );
 });
+Booking.find({}).remove(function(){
+  Booking.create({
+    number: 'RX1231412',
+    active: true,
+    bookedBy: {
+      name: 'Test Testsson',
+      email: 'test.testsson@test.com',
+      username: 'testsson1'
+    },
+    bookedAt: new Date(2014,8,8),
+    tickets:
+    [
+    {
+      type:'datorplats',
+      price: 180
+    },
+    {
+      type:'datorskjuts',
+      price: 20
+    }
+    ],
+    total: 200,
+    isPaid: false,
+    isCheckedIn: false
+  },
+  {
+    number: 'RX4893412',
+    active: true,
+    bookedBy: {
+      name: 'Test Testsson2',
+      email: 'test.testsson2@test.com',
+      username: 'testsson2'
+    },
+    bookedAt: new Date(2014,9,8),
+    tickets:
+    [
+    {
+      type:'datorplats',
+      price:180
+    }
+    ],
+    total: 180,
+    isPaid: true,
+    isCheckedIn: false
+  },
+  {
+    number: 'RX5738412',
+    active: true,
+    bookedBy: {
+      name: 'Test Testsson3',
+      email: 'test.testsson3@test.com',
+      username: 'testsson3'
+    },
+    bookedAt: new Date(2014,10,8),
+    tickets:
+    [
+    {
+      type:'datorplats',
+      price: 180
+    },
+    {
+      type:'datorskjuts',
+      price: 20
+    }
+    ],
+    total: 200,
+    isPaid: true,
+    isCheckedIn: false
+  }
+  )
+})

@@ -6,7 +6,7 @@
 
 
 
-    Search: <input class="search" ng-model="searchText">
+    <input class="search darkwell" ng-model="searchText" placeholder="Filter...">
     <ul class="list-group">
       <li class="list-group-item row">
         <span class="text-muted col-md-2">Name</span>
@@ -15,16 +15,16 @@
         <span class="text-muted col-md-2">Payed</span>
         <span class="text-muted col-md-2">Total</span>
         <span class="text-muted col-md-2">Incheckad</span>
-        
+
       </li>
-      <li class="list-group-item row" ng-repeat="guest in guests | filter:searchText">
-        <span class="text-muted col-md-2">{{guest.name}}</span>
-        <span class="text-muted col-md-2">{{guest.email}}</span>
-        <span class="text-muted col-md-2">{{guest.tickets}}</span>
-        <span class="text-muted col-md-2">{{guest.payed}}</span>
-        <span class="text-muted col-md-2">{{guest.total}}</span>
-        <span class="text-muted col-md-2">{{guest.incheckad}}</span>
-        
+      <li class="list-group-item row" ng-repeat="booking in bookings | filter:searchText">
+        <span class="text-muted col-md-2">{{booking.bookedBy.name}}</span>
+        <span class="text-muted col-md-2">{{booking.bookedBy.email}}</span>
+        <span class="text-muted col-md-2">{{booking.tickets.length}}</span>
+        <span class="text-muted col-md-2">{{booking.isPaid}}</span>
+        <span class="text-muted col-md-2">{{booking.total}}</span>
+        <span class="text-muted col-md-2">{{booking.isCheckedIn}}</span>
+
       </li>
 
     </ul>

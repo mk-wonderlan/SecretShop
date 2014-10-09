@@ -6,7 +6,13 @@ var mongoose = require('mongoose'),
 var IncheckSchema = new Schema({
   name: String,
   info: String,
-  active: Boolean
+  active: Boolean,
+  bookedBy: {},
+  bookedAt: Date,
+  tickets: [],
+  total: Number,
+  isPaid: Boolean,
+  isCheckedIn: Boolean
 });
 
 module.exports = mongoose.model('Incheck', IncheckSchema);

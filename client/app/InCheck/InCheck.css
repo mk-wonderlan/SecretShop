@@ -1,8 +1,7 @@
-input.search {padding:5px; border:2px solid #ccc; 
--webkit-border-radius: 5px;
-    border-radius: 5px;
-    
-    color:black;
+input.search {
+
+    margin: 10px;
+    width: 60%;
     }
 .text-muted-title>p{
 	font-weight: bold;
