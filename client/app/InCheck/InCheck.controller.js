@@ -17,9 +17,13 @@ angular.module('secretShopApp')
     };
     $scope.syncStuff = function()
     {
-      console.log("sync");
-      $http.post('/api/inchecks/sync',null);
-    }
+      $http.post('/api/inchecks/sync',null).success(function(obj)
+      {
+        $http.get('/api/inchecks').success(function(bookings) {
+          $scope.bookings = bookings;
+      });
+      });
+    };
 
     $scope.deleteBooking = function(booking,paymentMethod) {
 

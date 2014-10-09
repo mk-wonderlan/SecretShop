@@ -2,7 +2,7 @@
 
 var _ = require('lodash');
 var Incheck = require('./incheck.model');
-
+var request = require('request');
 // Get list of inchecks
 exports.index = function(req, res) {
   Incheck.find(function (err, inchecks) {
@@ -19,10 +19,13 @@ exports.show = function(req, res) {
     return res.json(incheck);
   });
 };
-exports.sync = function(req,res){
+exports.sync = function(req,rez){
   var orderNumbers = [];
   var orderObjects = [];
-
+  var returnFunc = function()
+  {
+    rez.json(201,true);
+  }
   var skuTranslate={
   9 : {
     name: "Datorplats",
@@ -58,6 +61,7 @@ exports.sync = function(req,res){
                 orderNumbers.push(obj.orders[i].number);
             }
         }
+        var finish = _.after(orderNumbers.length,returnFunc);
         for(var i = 0;i<orderNumbers.length;i++)
           {
             request({
@@ -68,17 +72,26 @@ exports.sync = function(req,res){
                 method: 'GET'
               }, function (err, res, body) {
                 var object = JSON.parse(body);
-
                 for(var i= 0;i<object.line_items.length;i++)
                   {
                     var lineItem = skuTranslate[object.line_items[i].variant_id];
                     ticketList.push({type: lineItem.name,price: lineItem.price});
                   }
+                  var firstName, lastName
+                  if(object.ship_address == null)
+                    {
+                      firstName = 'Okänd';
+                      lastName = 'Okänd';
+                    }
+                    else{
+                      firstName= object.ship_address.firstname;
+                      lastName = object.ship_address.lastname;
+                    }
                 var bodyObjectAsIncheck = {
                   number: object.number,
                   active: true,
                   bookedBy: {
-                    name: object.ship_address.firstName + object.ship_address.lastName,
+                    name: firstName + ' '+ lastName,
                     email: object.email,
                     username: object.user_id
                   },
@@ -88,15 +101,15 @@ exports.sync = function(req,res){
                   isPaid: object.payment_state == 'paid'
                 }
                 Incheck.update({number: object.number}, bodyObjectAsIncheck, {upsert: true}, function(err){
-                return res.json(400,false);
-                })
+                  if(err){ return rez.json(400,bodyObjectAsIncheck);}
+                finish();
+                });
               }
             );
           }
-      return res.json(201,true);
     });
 
-}
+};
 // Creates a new incheck in the DB.
 exports.create = function(req, res) {
   Incheck.create(req.body, function(err, incheck) {
