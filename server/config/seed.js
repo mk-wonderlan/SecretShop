@@ -116,6 +116,246 @@ Booking.find({}).remove(function(){
     total: 200,
     isPaid: true,
     isCheckedIn: false
+  },
+  {
+    number: 'RX5738412',
+    active: true,
+    bookedBy: {
+      name: 'Test Testsson3',
+      email: 'test.testsson3@test.com',
+      username: 'testsson3'
+    },
+    bookedAt: new Date(2014,10,8),
+    tickets:
+    [
+    {
+      type:'datorplats',
+      price: 180
+    },
+    {
+      type:'datorskjuts',
+      price: 20
+    }
+    ],
+    total: 200,
+    isPaid: true,
+    isCheckedIn: false
+  },
+  {
+    number: 'RX5738412',
+    active: true,
+    bookedBy: {
+      name: 'Test Testsson3',
+      email: 'test.testsson3@test.com',
+      username: 'testsson3'
+    },
+    bookedAt: new Date(2014,10,8),
+    tickets:
+    [
+    {
+      type:'datorplats',
+      price: 180
+    },
+    {
+      type:'datorskjuts',
+      price: 20
+    }
+    ],
+    total: 200,
+    isPaid: true,
+    isCheckedIn: false
+  },
+  {
+    number: 'RX5738412',
+    active: true,
+    bookedBy: {
+      name: 'Test Testsson3',
+      email: 'test.testsson3@test.com',
+      username: 'testsson3'
+    },
+    bookedAt: new Date(2014,10,8),
+    tickets:
+    [
+    {
+      type:'datorplats',
+      price: 180
+    },
+    {
+      type:'datorskjuts',
+      price: 20
+    }
+    ],
+    total: 200,
+    isPaid: true,
+    isCheckedIn: false
+  },
+  {
+    number: 'RX5738412',
+    active: true,
+    bookedBy: {
+      name: 'Test Testsson3',
+      email: 'test.testsson3@test.com',
+      username: 'testsson3'
+    },
+    bookedAt: new Date(2014,10,8),
+    tickets:
+    [
+    {
+      type:'datorplats',
+      price: 180
+    },
+    {
+      type:'datorskjuts',
+      price: 20
+    }
+    ],
+    total: 200,
+    isPaid: true,
+    isCheckedIn: false
+  },
+  {
+    number: 'RX5738412',
+    active: true,
+    bookedBy: {
+      name: 'Test Testsson3',
+      email: 'test.testsson3@test.com',
+      username: 'testsson3'
+    },
+    bookedAt: new Date(2014,10,8),
+    tickets:
+    [
+    {
+      type:'datorplats',
+      price: 180
+    },
+    {
+      type:'datorskjuts',
+      price: 20
+    }
+    ],
+    total: 200,
+    isPaid: true,
+    isCheckedIn: false
+  },
+  {
+    number: 'RX5738412',
+    active: true,
+    bookedBy: {
+      name: 'Test Testsson3',
+      email: 'test.testsson3@test.com',
+      username: 'testsson3'
+    },
+    bookedAt: new Date(2014,10,8),
+    tickets:
+    [
+    {
+      type:'datorplats',
+      price: 180
+    },
+    {
+      type:'datorskjuts',
+      price: 20
+    }
+    ],
+    total: 200,
+    isPaid: true,
+    isCheckedIn: false
+  },
+  {
+    number: 'RX5738412',
+    active: true,
+    bookedBy: {
+      name: 'Test Testsson3',
+      email: 'test.testsson3@test.com',
+      username: 'testsson3'
+    },
+    bookedAt: new Date(2014,10,8),
+    tickets:
+    [
+    {
+      type:'datorplats',
+      price: 180
+    },
+    {
+      type:'datorskjuts',
+      price: 20
+    }
+    ],
+    total: 200,
+    isPaid: true,
+    isCheckedIn: false
+  },
+  {
+    number: 'RX5738412',
+    active: true,
+    bookedBy: {
+      name: 'Test Testsson3',
+      email: 'test.testsson3@test.com',
+      username: 'testsson3'
+    },
+    bookedAt: new Date(2014,10,8),
+    tickets:
+    [
+    {
+      type:'datorplats',
+      price: 180
+    },
+    {
+      type:'datorskjuts',
+      price: 20
+    }
+    ],
+    total: 200,
+    isPaid: true,
+    isCheckedIn: false
+  },
+  {
+    number: 'RX5738412',
+    active: true,
+    bookedBy: {
+      name: 'Test Testsson3',
+      email: 'test.testsson3@test.com',
+      username: 'testsson3'
+    },
+    bookedAt: new Date(2014,10,8),
+    tickets:
+    [
+    {
+      type:'datorplats',
+      price: 180
+    },
+    {
+      type:'datorskjuts',
+      price: 20
+    }
+    ],
+    total: 200,
+    isPaid: true,
+    isCheckedIn: false
+  },
+  {
+    number: 'RX5738412',
+    active: true,
+    bookedBy: {
+      name: 'Test Testsson3',
+      email: 'test.testsson3@test.com',
+      username: 'testsson3'
+    },
+    bookedAt: new Date(2014,10,8),
+    tickets:
+    [
+    {
+      type:'datorplats',
+      price: 180
+    },
+    {
+      type:'datorskjuts',
+      price: 20
+    }
+    ],
+    total: 200,
+    isPaid: true,
+    isCheckedIn: false
   }
   )
 })

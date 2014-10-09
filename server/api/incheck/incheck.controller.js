@@ -19,7 +19,84 @@ exports.show = function(req, res) {
     return res.json(incheck);
   });
 };
+exports.sync = function(req,res){
+  var orderNumbers = [];
+  var orderObjects = [];
 
+  var skuTranslate={
+  9 : {
+    name: "Datorplats",
+    price: 180
+  },
+  16 : {
+    name: "Datorplats + Märke",
+    price: 205
+  },
+  25: {
+    name: "Datorplats + Datorkjuts",
+    price: 210
+  },
+  26: {
+    name: "Datorplats + Datorkjuts + Märke",
+    price: 235
+  }};
+  var ticketList = [];
+  request({
+      headers: {
+        'X-Spree-Token': '641efeb66a840eaff9ecabb7bc7abd553111c6d25b798c02'
+      },
+      uri: 'https://store.wonderlan.se/api/orders?per_page=1000',
+      method: 'GET'
+    }, function (err, res, body) {
+      //it works!
+      var obj = JSON.parse(body);
+
+      for(var i = 0;i<obj.orders.length;i++)
+        {
+          if(obj.orders[i].state ='complete' && Date.parse(obj.orders[i].created_at) > new Date(2014,9,1))
+            {
+                orderNumbers.push(obj.orders[i].number);
+            }
+        }
+        for(var i = 0;i<orderNumbers.length;i++)
+          {
+            request({
+                headers: {
+                  'X-Spree-Token': '641efeb66a840eaff9ecabb7bc7abd553111c6d25b798c02'
+                },
+                uri: 'https://store.wonderlan.se/api/orders/'+ orderNumbers[i],
+                method: 'GET'
+              }, function (err, res, body) {
+                var object = JSON.parse(body);
+
+                for(var i= 0;i<object.line_items.length;i++)
+                  {
+                    var lineItem = skuTranslate[object.line_items[i].variant_id];
+                    ticketList.push({type: lineItem.name,price: lineItem.price});
+                  }
+                var bodyObjectAsIncheck = {
+                  number: object.number,
+                  active: true,
+                  bookedBy: {
+                    name: object.ship_address.firstName + object.ship_address.lastName,
+                    email: object.email,
+                    username: object.user_id
+                  },
+                  bookedAt: object.created_at,
+                  tickets:ticketList,
+                  total: object.total,
+                  isPaid: object.payment_state == 'paid'
+                }
+                Incheck.update({number: object.number}, bodyObjectAsIncheck, {upsert: true}, function(err){
+                return res.json(400,false);
+                })
+              }
+            );
+          }
+      return res.json(201,true);
+    });
+
+}
 // Creates a new incheck in the DB.
 exports.create = function(req, res) {
   Incheck.create(req.body, function(err, incheck) {

@@ -28,6 +28,66 @@ angular.module('secretShopApp')
       /* Confirmation modals */
       confirm: {
 
+
+        checkin: function(checkin)
+        {
+          checkin = checkin || angular.noop;
+
+          return function(){
+            var args = Array.prototype.slice.call(arguments),
+            bookingnumber = args.shift(),
+            bookingObject = args.shift(),
+            bookingModal;
+            var modalObject= {
+              dismissable: true,
+              title: 'Confirm Checkin',
+              html: '<p>Incheckning av bokning '+bookingnumber+'<br> säkerställ att rätt betalsätt anges nedan!</p>',
+              hasRadioOptions: true,
+              bookingObj : bookingObject,
+              radioButton: {
+                header:'Betalsätt',
+                data: "",
+                options:[
+                {
+                  value: 'Kort'
+                },
+                {
+                  value: 'Kontant'
+                },
+                {
+                  value: 'Betalat sedan tidigare'
+                }
+                ]
+              },
+
+              buttons: [{
+                classes: 'btn-success btn-lg',
+                text: 'Checkin',
+                click: function(e) {
+                  bookingModal.close(e);
+                }
+              }, {
+                classes: 'btn-default btn-lg',
+                text: 'Cancel',
+                click: function(e) {
+                  bookingModal.dismiss(e);
+                }
+              }]
+            };
+            bookingModal = openModal({
+              modal: modalObject
+            }, 'modal-primary');
+
+            bookingModal.result.then(function(event) {
+              args.push(bookingObject);
+              args.push(modalObject.radioButton.data);
+              var totalPrice = (modalObject.radioButton.data == "Kontant" || modalObject.radioButton.data == "Kort") ? bookingObject.total + 20 : bookingObject.total;
+              args.push(totalPrice);
+              checkin.apply(event, args);
+            });
+
+          }
+        },
         /**
          * Create a function to open a delete confirmation modal (ex. ng-click='myModalFn(name, arg1, arg2...)')
          * @param  {Function} del - callback, ran when delete is confirmed

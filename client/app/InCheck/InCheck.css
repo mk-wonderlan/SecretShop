@@ -2,6 +2,8 @@ input.search {
 
     margin: 10px;
     width: 60%;
+    height: 50px;
+    font-size: 30px;
     }
 .text-muted-title>p{
 	font-weight: bold;
@@ -12,4 +14,10 @@ div.clickable-row{
 }
 .indent-row{
   width:80%;
+}
+.square{
+  font-size:20px;
+    font-family: 'Lato',verdana, sans-serif;
+    color: #fff;
+    text-align:center;
 }
