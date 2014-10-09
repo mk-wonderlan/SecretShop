@@ -12,18 +12,26 @@
         <span class="text-muted col-md-2">Name</span>
         <span class="text-muted col-md-2">Email</span>
         <span class="text-muted col-md-2">Tickets</span>
-        <span class="text-muted col-md-2">Payed</span>
+        <span class="text-muted col-md-2">Paid</span>
         <span class="text-muted col-md-2">Total</span>
-        <span class="text-muted col-md-2">Incheckad</span>
+        <span class="text-muted col-md-2">Checkedin</span>
 
       </li>
       <li class="list-group-item row" ng-repeat="booking in bookings | filter:searchText">
+        <div class="clickable-row" ng-click="booking.isActive = !booking.isActive">
         <span class="text-muted col-md-2">{{booking.bookedBy.name}}</span>
         <span class="text-muted col-md-2">{{booking.bookedBy.email}}</span>
         <span class="text-muted col-md-2">{{booking.tickets.length}}</span>
         <span class="text-muted col-md-2">{{booking.isPaid}}</span>
         <span class="text-muted col-md-2">{{booking.total}}</span>
         <span class="text-muted col-md-2">{{booking.isCheckedIn}}</span>
+          <ul  ng-show="booking.isActive">
+        <li class="list-group-item row" ng-repeat="ticket in booking.tickets">
+        <span class="text-muted col-md-2">{{ticket.type}}</span>
+        <span class="text-muted col-md-2">{{ticket.price}}</span>
+        </li>
+      </ul>
+      </div>
 
       </li>
 
