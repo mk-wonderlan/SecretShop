@@ -1,12 +1,14 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container">
+  <button class="btn btn-warning btn-lg" ng-click="syncData()">SYNC!</button>
           <a class="btn btn-default btn-lg btn-info" href="/signup">
             Register new user
           </a>
 
 </div>
 <div class="container">
+
   <p>The delete user and user index api routes are restricted to users with the 'admin' role.</p>
   <ul class="list-group">
     <li class="list-group-item" ng-repeat="user in users">

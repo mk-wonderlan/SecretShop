@@ -3,8 +3,17 @@
   <h4 ng-if="modal.title" ng-bind="modal.title" class="modal-title"></h4>
 </div>
 <div class="modal-body-dark">
+  <p ng-bind-html="modal.bookingText"></p>
   <p ng-if="modal.text" ng-bind="modal.text"></p>
+  <ul>
+    <li ng-repeat="ticket in modal.bookingObj.tickets">
+      <span>{{ticket.type}}</span>: <span>{{ticket.price}} kr</span>
+    </li>
+  </ul>
+  <p>Betalningsstatus: <span ng-class="{true:'danger',false:'success',undefined:'danger'}[modal.shouldPay]">{{modal.paymentStatusText}}</span></p>
+  <div ng-if="modal.shouldPay">
   <div ng-if="modal.html" ng-bind-html="modal.html"></div>
+
   <div ng-if="modal.hasRadioOptions">
     <span>{{modal.radioButtonHeader}}</span>
     <div class="btn-group btn-group-lg">
@@ -12,11 +21,13 @@
       {{radioButton.value}}
     </button>
     <div ng-if="modal.radioButton.data == 'Kort' || modal.radioButton.data == 'Kontant'">
+      <p>Administrationsavgift på 20 kr tillkommer</p>
       <br>
       <p> Kunden ska betala {{modal.bookingObj.total + 20}} kr</p>
     </div>
     </div>
   </div>
+</div>
   </div>
 <div class="modal-footer">
   <button ng-repeat="button in modal.buttons" ng-class="button.classes" ng-click="button.click($event)" ng-bind="button.text" class="btn"></button>

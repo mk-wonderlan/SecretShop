@@ -72,6 +72,7 @@ exports.sync = function(req,rez){
                 method: 'GET'
               }, function (err, res, body) {
                 var object = JSON.parse(body);
+                ticketList = [];
                 for(var i= 0;i<object.line_items.length;i++)
                   {
                     var lineItem = skuTranslate[object.line_items[i].variant_id];
@@ -87,6 +88,7 @@ exports.sync = function(req,rez){
                       firstName= object.ship_address.firstname;
                       lastName = object.ship_address.lastname;
                     }
+                var paymentState =  object.payment_state || "payment_due";
                 var bodyObjectAsIncheck = {
                   number: object.number,
                   active: true,
@@ -98,7 +100,8 @@ exports.sync = function(req,rez){
                   bookedAt: object.created_at,
                   tickets:ticketList,
                   total: object.total,
-                  isPaid: object.payment_state == 'paid'
+                  isPaid: paymentState == 'paid',
+                  isCheckedIn : false
                 }
                 Incheck.update({number: object.number}, bodyObjectAsIncheck, {upsert: true}, function(err){
                   if(err){ return rez.json(400,bodyObjectAsIncheck);}

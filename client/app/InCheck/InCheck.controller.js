@@ -15,15 +15,7 @@ angular.module('secretShopApp')
       $http.post('/api/inchecks', { name: $scope.newBooking });
       $scope.newBooking = '';
     };
-    $scope.syncStuff = function()
-    {
-      $http.post('/api/inchecks/sync',null).success(function(obj)
-      {
-        $http.get('/api/inchecks').success(function(bookings) {
-          $scope.bookings = bookings;
-      });
-      });
-    };
+  
 
     $scope.deleteBooking = function(booking,paymentMethod) {
 
@@ -31,14 +23,18 @@ angular.module('secretShopApp')
     };
     $scope.checkIn = Modal.confirm.checkin(function(booking,paymentMethod,totalPrice)
     {
+      if(booking.isCheckedIn == false)
+        {
         booking.isCheckedIn = true;
-        console.log(paymentMethod)
         booking.paymentMethod = paymentMethod;
         booking.total = totalPrice;
         booking.hasAdministrativeCosts = true;
+        booking.isPaid = true;
         $http.put('/api/inchecks/'+booking._id, booking);
+      }
 
     });
+
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('incheck');
     });

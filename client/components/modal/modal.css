@@ -45,3 +45,13 @@ background: #428bca;
 .modal-body-dark p{
   font-size:18px;
 }
+span.success{
+  color:#5cb85c;
+}
+span.danger{
+  color:#d9534f;
+}
+.modal-body-dark ul{
+  list-style:none;
+  font-size:20px;
+}

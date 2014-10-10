@@ -38,10 +38,14 @@ angular.module('secretShopApp')
             bookingnumber = args.shift(),
             bookingObject = args.shift(),
             bookingModal;
+
             var modalObject= {
               dismissable: true,
               title: 'Confirm Checkin',
-              html: '<p>Incheckning av bokning '+bookingnumber+'<br> säkerställ att rätt betalsätt anges nedan!</p>',
+              shouldPay: !bookingObject.isPaid,
+              bookingText: '<p>Boking '+bookingnumber+'</p>',
+              paymentStatusText : bookingObject.isPaid ? 'Betald' : 'Ej betald',
+              html: '<p>Säkerställ att rätt betalsätt anges nedan!</p>',
               hasRadioOptions: true,
               bookingObj : bookingObject,
               radioButton: {

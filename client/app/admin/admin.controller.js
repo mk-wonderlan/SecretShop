@@ -14,4 +14,10 @@ angular.module('secretShopApp')
         }
       });
     };
+    $scope.syncData = function()
+    {
+      $http.post('/api/inchecks/sync',null).success(function(obj)
+      {
+      });
+    }
   });

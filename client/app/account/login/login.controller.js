@@ -15,7 +15,7 @@ angular.module('secretShopApp')
         })
         .then( function() {
           // Logged in, redirect to home
-          $location.path('/main');
+          $location.path('/incheck');
         })
         .catch( function(err) {
           $scope.errors.other = err.message;
